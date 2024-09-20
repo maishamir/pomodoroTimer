@@ -1,41 +1,62 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import InputForm from "./components/InputForm";
+import TimerDisplay from "./components/TimerDisplay";
 
 function App() {
   const [input, setInput] = useState();
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
+  const [buttonText, setButtonText] = useState("Start");
 
-  function handleSubmit(e) {
+  function handleStartStop(e) {
     e.preventDefault();
-    let currInput = Number(input);
-    setMinutes(currInput);
-    setSeconds(0);
-    setIsRunning(true);
+
+    setIsRunning((prevRunning) => {
+      if (prevRunning) {
+        return false;
+      } else if (minutes === 0 && seconds === 0) {
+        let currInput = Number(input);
+        setMinutes(currInput);
+        setSeconds(0);
+        return true;
+      } else {
+        return true;
+      }
+    });
+
+    setButtonText((prevText) => {
+      if (prevText === "Start") {
+        return "Pause";
+      } else {
+        return "Start";
+      }
+    });
   }
+
   useEffect(() => {
     if (!isRunning) return;
 
     const tick = () => {
       // handle the seconds
-      setSeconds(prevSecond => {
+      setSeconds((prevSecond) => {
         if (prevSecond > 0) {
-          return prevSecond - 1; 
+          return prevSecond - 1;
         } else {
-          return 59
+          return 59;
         }
-      })
+      });
 
       // handle the minutes
       if (seconds === 0) {
-        setMinutes(prevMinutes => {
+        setMinutes((prevMinutes) => {
           if (prevMinutes > 0) {
             return prevMinutes - 1;
           } else {
-            return 0
+            return 0;
           }
-        })
+        });
       }
     };
 
@@ -47,16 +68,14 @@ function App() {
   return (
     <>
       <h1>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="number"
-            placeholder="Enter a number of minutes"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-          <button type="submit">Start</button>
-        </form>
-        {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+        <InputForm
+          input={input}
+          setInput={setInput}
+          buttonText={buttonText}
+          isRunning={isRunning}
+          handleStartStop={handleStartStop}
+        />
+        <TimerDisplay minutes={minutes} seconds={seconds} />
       </h1>
     </>
   );
