@@ -12,7 +12,6 @@ function App() {
 
   function handleStartStop(e) {
     e.preventDefault();
-
     setIsRunning((prevRunning) => {
       if (prevRunning) {
         return false;
@@ -25,7 +24,6 @@ function App() {
         return true;
       }
     });
-
     setButtonText((prevText) => {
       if (prevText === "Start") {
         return "Pause";
@@ -33,6 +31,16 @@ function App() {
         return "Start";
       }
     });
+  }
+
+  function handleClear() {
+
+    //reset the timer back to the original amount that the user inputted
+    setMinutes(input)
+    setSeconds(0)
+
+    //stop the timer
+    setIsRunning(false)
   }
 
   useEffect(() => {
@@ -75,6 +83,7 @@ function App() {
           isRunning={isRunning}
           handleStartStop={handleStartStop}
         />
+        <button onClick={handleClear}>Clear</button>
         <TimerDisplay minutes={minutes} seconds={seconds} />
       </h1>
     </>
