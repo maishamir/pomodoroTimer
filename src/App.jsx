@@ -41,6 +41,7 @@ function App() {
 
     //stop the timer
     setIsRunning(false)
+    setButtonText("Start")
   }
 
   useEffect(() => {
