@@ -9,9 +9,11 @@ function App() {
   const [minutes, setMinutes] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [buttonText, setButtonText] = useState("Start");
+  const [isNotCleared, setIsNotCleared] = useState(false)
 
   function handleStartStop(e) {
     e.preventDefault();
+    setIsNotCleared(true)
     setIsRunning((prevRunning) => {
       if (prevRunning) {
         return false;
@@ -42,6 +44,7 @@ function App() {
     //stop the timer
     setIsRunning(false)
     setButtonText("Start")
+    setIsNotCleared(false)
   }
 
   useEffect(() => {
@@ -81,7 +84,7 @@ function App() {
           input={input}
           setInput={setInput}
           buttonText={buttonText}
-          isRunning={isRunning}
+          isNotCleared={isNotCleared}
           handleStartStop={handleStartStop}
         />
         <button onClick={handleClear}>Clear</button>

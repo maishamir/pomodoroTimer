@@ -1,6 +1,6 @@
 import React from "react";
 
-function InputForm({ input, setInput, buttonText, isRunning, handleStartStop}) {
+function InputForm({ input, setInput, buttonText, isNotCleared, handleStartStop}) {
   return (
     <form onSubmit={handleStartStop}>
       <input
@@ -8,7 +8,7 @@ function InputForm({ input, setInput, buttonText, isRunning, handleStartStop}) {
         placeholder="Enter a number of minutes"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        disabled={isRunning}
+        disabled={isNotCleared}
       />
       <button type="submit">{buttonText}</button>
     </form>
