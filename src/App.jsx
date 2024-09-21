@@ -6,7 +6,7 @@ import TimerDisplay from "./components/TimerDisplay";
 function App() {
   const [input, setInput] = useState();
   const [seconds, setSeconds] = useState(0);
-  const [minutes, setMinutes] = useState(0);
+  const [minutes, setMinutes] = useState(10);
   const [isRunning, setIsRunning] = useState(false);
   const [buttonText, setButtonText] = useState("Start");
   const [isNotCleared, setIsNotCleared] = useState(false)
@@ -14,31 +14,28 @@ function App() {
   function handleStartStop(e) {
     e.preventDefault();
     setIsNotCleared(true)
-    setIsRunning((prevRunning) => {
-      if (prevRunning) {
-        return false;
-      } else if (minutes === 0 && seconds === 0) {
-        let currInput = Number(input);
-        setMinutes(currInput);
-        setSeconds(0);
-        return true;
-      } else {
-        return true;
-      }
-    });
-    setButtonText((prevText) => {
-      if (prevText === "Start") {
-        return "Pause";
-      } else {
-        return "Start";
-      }
-    });
+
+    if (isRunning) {
+      setIsRunning(false)
+      setButtonText("Start")
+    } else {
+      const minutesToSet = input ? input : 10;
+      setMinutes(minutesToSet)
+      setSeconds(0)
+      setIsRunning(true)
+      setButtonText("Pause")
+      setIsNotCleared(true)
+    }
   }
 
   function handleClear() {
 
-    //reset the timer back to the original amount that the user inputted
-    setMinutes(input)
+    //reset the timer back to the original amount that the user inputted IF there was input
+    if (input) {
+      setMinutes(input)
+    } else {
+      setMinutes(10)
+    }
     setSeconds(0)
 
     //stop the timer
