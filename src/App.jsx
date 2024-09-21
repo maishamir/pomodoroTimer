@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import InputForm from "./components/InputForm";
-import TimerDisplay from "./components/TimerDisplay";
+import InputForm from "./components/InputForm/InputForm";
+import TimerDisplay from "./components/TimerDisplay/TimerDisplay";
 
 function App() {
   const [input, setInput] = useState();
@@ -77,15 +77,16 @@ function App() {
   return (
     <>
       <h1>
+        <TimerDisplay minutes={minutes} seconds={seconds} />
         <InputForm
           input={input}
           setInput={setInput}
           buttonText={buttonText}
           isNotCleared={isNotCleared}
           handleStartStop={handleStartStop}
+          handleClear={handleClear}
         />
-        <button onClick={handleClear}>Clear</button>
-        <TimerDisplay minutes={minutes} seconds={seconds} />
+        
       </h1>
     </>
   );
