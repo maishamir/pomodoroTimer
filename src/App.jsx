@@ -9,39 +9,38 @@ function App() {
   const [minutes, setMinutes] = useState(10);
   const [isRunning, setIsRunning] = useState(false);
   const [buttonText, setButtonText] = useState("Start");
-  const [isNotCleared, setIsNotCleared] = useState(false)
+  const [isNotCleared, setIsNotCleared] = useState(false);
 
   function handleStartStop(e) {
     e.preventDefault();
-    setIsNotCleared(true)
+    setIsNotCleared(true);
 
     if (isRunning) {
-      setIsRunning(false)
-      setButtonText("Start")
+      setIsRunning(false);
+      setButtonText("Start");
     } else {
       const minutesToSet = input ? input : 10;
-      setMinutes(minutesToSet)
-      setSeconds(0)
-      setIsRunning(true)
-      setButtonText("Pause")
-      setIsNotCleared(true)
+      setMinutes(minutesToSet);
+      setSeconds(0);
+      setIsRunning(true);
+      setButtonText("Pause");
+      setIsNotCleared(true);
     }
   }
 
   function handleClear() {
-
     //reset the timer back to the original amount that the user inputted IF there was input
     if (input) {
-      setMinutes(input)
+      setMinutes(input);
     } else {
-      setMinutes(10)
+      setMinutes(10);
     }
-    setSeconds(0)
+    setSeconds(0);
 
     //stop the timer
-    setIsRunning(false)
-    setButtonText("Start")
-    setIsNotCleared(false)
+    setIsRunning(false);
+    setButtonText("Start");
+    setIsNotCleared(false);
   }
 
   useEffect(() => {
@@ -75,19 +74,16 @@ function App() {
   }, [seconds, isRunning]);
 
   return (
-    <>
-      <h1>
-        <InputForm
-          input={input}
-          setInput={setInput}
-          buttonText={buttonText}
-          isNotCleared={isNotCleared}
-          handleStartStop={handleStartStop}
-        />
-        <button onClick={handleClear}>Clear</button>
-        <TimerDisplay minutes={minutes} seconds={seconds} />
-      </h1>
-    </>
+    <main className="app">
+      <TimerDisplay minutes={minutes} seconds={seconds} />
+      <InputForm
+        input={input}
+        setInput={setInput}
+        buttonText={buttonText}
+        isNotCleared={isNotCleared}
+        handleStartStop={handleStartStop}
+      />
+    </main>
   );
 }
 
