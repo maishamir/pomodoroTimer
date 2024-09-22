@@ -75,19 +75,19 @@ function App() {
   }, [seconds, isRunning]);
 
   return (
-    <main className="app">
+    <>
       <h1>
-        <TimerDisplay minutes={minutes} seconds={seconds} />
-      </h1>
-      <InputForm
+        <InputForm
           input={input}
           setInput={setInput}
           buttonText={buttonText}
           isNotCleared={isNotCleared}
           handleStartStop={handleStartStop}
-          handleClear={handleClear}
         />
-    </main>
+        <button onClick={handleClear}>Clear</button>
+        <TimerDisplay minutes={minutes} seconds={seconds} />
+      </h1>
+    </>
   );
 }
 
