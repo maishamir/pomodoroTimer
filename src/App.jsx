@@ -11,6 +11,8 @@ function App() {
   const [buttonText, setButtonText] = useState("Start");
   const [isNotCleared, setIsNotCleared] = useState(false);
 
+  const [sessions, setSessions] = useState(0);
+
   function handleStartStop(e) {
     e.preventDefault();
     setIsNotCleared(true);
@@ -31,7 +33,7 @@ function App() {
   function handleClear() {
     //reset the timer back to the original amount that the user inputted IF there was input
     console.log("clearing timer");
-    setMinutes(input ? input : 10)
+    setMinutes(input ? input : 10);
     setSeconds(0);
 
     //stop the timer
@@ -41,10 +43,15 @@ function App() {
   }
 
   useEffect(() => {
-    console.log("useEffect - isRunning:", isRunning, "seconds:", seconds)
     if (!isRunning) return;
 
     const tick = () => {
+      if (seconds === 0 && minutes === 0) {
+        setIsRunning(false);
+        setSessions((prevSession) => prevSession + 1)
+        return;
+      }
+
       // handle the seconds
       setSeconds((prevSecond) => {
         if (prevSecond > 0) {
@@ -82,6 +89,8 @@ function App() {
         handleStartStop={handleStartStop}
         handleClear={handleClear}
       />
+
+      <p>Sessions: {sessions}</p>
     </main>
   );
 }
