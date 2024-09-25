@@ -15,7 +15,7 @@ function InputForm({
         type="number"
         placeholder="# minutes"
         value={input}
-        onChange={({target}) => setInput(target.value)}
+        onChange={(e) => setInput(e.target.value)}
         disabled={isNotCleared}
         className="inputForm__input"
       />

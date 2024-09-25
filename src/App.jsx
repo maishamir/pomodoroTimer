@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import InputForm from "./components/InputForm/InputForm";
 import TimerDisplay from "./components/TimerDisplay/TimerDisplay";
+import FocusSession from "./components/FocusSession/FocusSession";
 
 function App() {
   const [input, setInput] = useState();
@@ -80,6 +81,7 @@ function App() {
 
   return (
     <main className="app">
+      <FocusSession />
       <TimerDisplay minutes={minutes} seconds={seconds} />
       <InputForm
         input={input}
