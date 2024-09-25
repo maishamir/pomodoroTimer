@@ -1,18 +1,32 @@
 import React from "react";
+import "./InputForm.scss";
 
-function InputForm({ input, setInput, buttonText, isNotCleared, handleStartStop, handleClear}) {
+function InputForm({
+  input,
+  setInput,
+  buttonText,
+  isNotCleared,
+  handleStartStop,
+  handleClear,
+}) {
   return (
     <form onSubmit={handleStartStop} className="inputForm">
       <input
         type="number"
-        placeholder="Enter a number of minutes"
+        placeholder="# minutes"
         value={input}
-        onChange={(e) => setInput(e.target.value)}
+        onChange={({target}) => setInput(target.value)}
         disabled={isNotCleared}
-        className="inputForm__form"
+        className="inputForm__input"
       />
-      <button type="submit" className="inputForm__button">{buttonText}</button>
-      <button onClick={handleClear} className="inputForm__button">Clear</button>
+      <div className="inputForm__buttons">
+        <button type="submit" className="inputForm__button">
+          {buttonText}
+        </button>
+        <button type="button" onClick={handleClear} className="inputForm__button">
+          Clear
+        </button>
+      </div>
     </form>
   );
 }

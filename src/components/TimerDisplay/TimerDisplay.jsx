@@ -1,10 +1,12 @@
 import React from "react";
+import "./TimerDisplay.scss"
 
-function TimerDisplay({minutes, seconds}) {
+function TimerDisplay({ minutes, seconds }) {
   return (
-    <div>
-      {minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
-    </div>
+    <h1 className="timerDisplay">
+      {minutes < 10 ? `0${minutes}` : minutes}:
+      {seconds < 10 ? `0${seconds}` : seconds}
+    </h1>
   );
 }
 

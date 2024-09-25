@@ -30,11 +30,8 @@ function App() {
 
   function handleClear() {
     //reset the timer back to the original amount that the user inputted IF there was input
-    if (input) {
-      setMinutes(input);
-    } else {
-      setMinutes(10);
-    }
+    console.log("clearing timer");
+    setMinutes(input ? input : 10)
     setSeconds(0);
 
     //stop the timer
@@ -44,6 +41,7 @@ function App() {
   }
 
   useEffect(() => {
+    console.log("useEffect - isRunning:", isRunning, "seconds:", seconds)
     if (!isRunning) return;
 
     const tick = () => {
@@ -82,6 +80,7 @@ function App() {
         buttonText={buttonText}
         isNotCleared={isNotCleared}
         handleStartStop={handleStartStop}
+        handleClear={handleClear}
       />
     </main>
   );
