@@ -1,0 +1,18 @@
+.focusSession {
+    &__focus {
+        margin-bottom: 1rem;
+        // border: 1px solid red;
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        cursor: pointer;
+        padding: 1rem;
+    }
+}
+
+
+
+.edit {
+    outline: 1px solid green;
+    border-radius: 8px;
+    color: rgba(0, 0, 0, 0.5 );
+}
