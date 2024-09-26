@@ -88,7 +88,7 @@ function App() {
         if (prevSecond > 0) {
           return prevSecond - 1;
         } else {
-          return 2;
+          return 59;
         }
       });
 
