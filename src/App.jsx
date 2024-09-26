@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./App.css";
+import "./App.scss";
 import InputForm from "./components/InputForm/InputForm";
 import TimerDisplay from "./components/TimerDisplay/TimerDisplay";
 
@@ -10,6 +10,9 @@ function App() {
   const [isRunning, setIsRunning] = useState(false);
   const [buttonText, setButtonText] = useState("Start");
   const [isNotCleared, setIsNotCleared] = useState(false);
+
+  const [isInputField, setIsInputField] = useState(true);
+  const [focusSession, setFocusSession] = useState("");
 
   const [sessions, setSessions] = useState(0);
 
@@ -42,13 +45,29 @@ function App() {
     setIsNotCleared(false);
   }
 
+  function handleBlur(e) {
+    // alert(`Clicked off input! Current focus: ${focusSession}`)
+    if (e.target.value === "") {
+      setIsInputField(true);
+    } else {
+      setIsInputField(false);
+    }
+  }
+
+  function handleSetFocus(e) {
+    setFocusSession(e.target.value);
+  }
+
+  function handleClick() {
+    setIsInputField((prevInputField) => !prevInputField);
+  }
   useEffect(() => {
     if (!isRunning) return;
 
     const tick = () => {
       if (seconds === 0 && minutes === 0) {
         setIsRunning(false);
-        setSessions((prevSession) => prevSession + 1)
+        setSessions((prevSession) => prevSession + 1);
         return;
       }
 
@@ -80,6 +99,25 @@ function App() {
 
   return (
     <main className="app">
+      <div>
+        {isInputField ? (
+          <input
+  type="text"
+  placeholder={focusSession === "" ? "What's your focus for this session?" : ""}
+  className="app__focusInput"
+  onFocus={() => setIsInputField(true)}  // Only track the input being active
+  onChange={handleSetFocus}
+  onBlur={handleBlur}
+  value={focusSession}
+/>
+
+        ) : (
+          <h1 className="app__focusSession" onClick={handleClick}>
+            {focusSession}
+          </h1>
+        )}
+      </div>
+
       <TimerDisplay minutes={minutes} seconds={seconds} />
       <InputForm
         input={input}
