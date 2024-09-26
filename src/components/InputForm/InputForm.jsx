@@ -5,7 +5,7 @@ function InputForm({
   input,
   setInput,
   buttonText,
-  isNotCleared,
+  timeEditable,
   handleStartStop,
   handleClear,
 }) {
@@ -16,7 +16,7 @@ function InputForm({
         placeholder="# minutes"
         value={input}
         onChange={({target}) => setInput(target.value)}
-        disabled={isNotCleared}
+        disabled={timeEditable ? false : true}
         className="inputForm__input"
       />
       <div className="inputForm__buttons">
