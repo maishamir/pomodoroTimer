@@ -10,7 +10,7 @@ function App() {
   const [isRunning, setIsRunning] = useState(false);
   const [buttonText, setButtonText] = useState("Start");
   const [timeEditable, setTimeEditable] = useState(true);
-  const [timerDone, setTimerDone] = useState(false)
+  const [timerDone, setTimerDone] = useState(false);
 
   const [isInputField, setIsInputField] = useState(true);
   const [focusSession, setFocusSession] = useState("");
@@ -38,7 +38,6 @@ function App() {
 
   function handleClear() {
     //reset the timer back to the original amount that the user inputted IF there was input
-    console.log("clearing timer");
     setMinutes(input ? input : 10);
     setSeconds(0);
 
@@ -49,7 +48,6 @@ function App() {
   }
 
   function handleBlur(e) {
-    // alert(`Clicked off input! Current focus: ${focusSession}`)
     if (e.target.value === "") {
       setIsInputField(true);
     } else {
@@ -65,21 +63,20 @@ function App() {
     setIsInputField((prevInputField) => !prevInputField);
   }
 
-
   useEffect(() => {
     if (isInputField && inputRef.current) {
       inputRef.current.focus();
     }
-  }, [isInputField])
+  }, [isInputField]);
   useEffect(() => {
     if (!isRunning) return;
 
     const tick = () => {
       if (seconds === 0 && minutes === 0) {
         setIsRunning(false);
-        setSessions((prevSession) => prevSession + 1); 
+        setSessions((prevSession) => prevSession + 1);
         setButtonText("Start");
-        setTimeEditable(true)
+        setTimeEditable(true);
         return;
       }
 
@@ -98,10 +95,6 @@ function App() {
           if (prevMinutes > 0) {
             return prevMinutes - 1;
           } else {
-            //setButtonText("Start") //doesn't work
-            //setTimerDone(true)  //doesn't work
-            //alert(timerDone)  //doesn't work :(
-            //console.log("timer is done") //doesn't work either
             return 0;
           }
         });
@@ -115,7 +108,7 @@ function App() {
 
   return (
     <main className="app">
-      <div>
+      <div className="app__focus">
         {isInputField ? (
           <input
             type="text"
@@ -133,18 +126,18 @@ function App() {
           </h1>
         )}
       </div>
-
-      <TimerDisplay minutes={minutes} seconds={seconds} />
-      <InputForm
-        input={input}
-        setInput={setInput}
-        buttonText={buttonText}
-        timeEditable={timeEditable}
-        handleStartStop={handleStartStop}
-        handleClear={handleClear}
-      />
-
-      <p className="app__sessionCount">Sessions: {sessions}</p>
+      <div className="app__timerDisplay">
+        <TimerDisplay minutes={minutes} seconds={seconds} />
+        <InputForm
+          input={input}
+          setInput={setInput}
+          buttonText={buttonText}
+          timeEditable={timeEditable}
+          handleStartStop={handleStartStop}
+          handleClear={handleClear}
+        />
+        {/* <p className="app__sessionCount">Sessions: {sessions}</p> */}
+      </div>
     </main>
   );
 }
