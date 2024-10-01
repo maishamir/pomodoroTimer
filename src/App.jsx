@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import "./App.scss";
 import InputForm from "./components/InputForm/InputForm";
 import TimerDisplay from "./components/TimerDisplay/TimerDisplay";
+import notificationSound from './assets/Timer complete.mp3';
+import useSound from "use-sound";
 
 function App() {
   const [input, setInput] = useState();
@@ -16,6 +18,10 @@ function App() {
   const [focusSession, setFocusSession] = useState("");
 
   const [sessions, setSessions] = useState(0);
+
+  const [playSound] = useSound(notificationSound, {
+    volume: 2.0
+  })
 
   const inputRef = useRef(null);
 
@@ -68,11 +74,13 @@ function App() {
       inputRef.current.focus();
     }
   }, [isInputField]);
+
   useEffect(() => {
     if (!isRunning) return;
 
     const tick = () => {
       if (seconds === 0 && minutes === 0) {
+        playSound();
         setIsRunning(false);
         setSessions((prevSession) => prevSession + 1);
         setButtonText("Start");
@@ -137,6 +145,7 @@ function App() {
           handleClear={handleClear}
         />
         {/* <p className="app__sessionCount">Sessions: {sessions}</p> */}
+
       </div>
     </main>
   );
