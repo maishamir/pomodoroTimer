@@ -12,7 +12,6 @@ function App() {
   const [isRunning, setIsRunning] = useState(false);
   const [buttonText, setButtonText] = useState("Start");
   const [timeEditable, setTimeEditable] = useState(true);
-  const [timerDone, setTimerDone] = useState(false);
 
   const [isInputField, setIsInputField] = useState(true);
   const [focusSession, setFocusSession] = useState("");
@@ -69,11 +68,6 @@ function App() {
     setIsInputField((prevInputField) => !prevInputField);
   }
 
-  useEffect(() => {
-    if (isInputField && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [isInputField]);
 
   useEffect(() => {
     if (!isRunning) return;
@@ -127,6 +121,7 @@ function App() {
             onChange={handleSetFocus}
             onBlur={handleBlur}
             value={focusSession}
+            
           />
         ) : (
           <h1 className="app__focusSession" onClick={handleClick}>
