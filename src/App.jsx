@@ -4,7 +4,6 @@ import InputForm from "./components/InputForm/InputForm";
 import TimerDisplay from "./components/TimerDisplay/TimerDisplay";
 import notificationSound from './assets/Timer complete.mp3';
 import useSound from "use-sound";
-
 function App() {
   const [input, setInput] = useState();
   const [seconds, setSeconds] = useState(0);
@@ -18,9 +17,11 @@ function App() {
 
   const [sessions, setSessions] = useState(0);
 
+  const [shouldFocusInput, setShouldFocusInput] = useState(false)
+
   const [playSound] = useSound(notificationSound, {
-    volume: 2.0
-  })
+    volume: 2.0,
+  });
 
   const inputRef = useRef(null);
 
@@ -42,11 +43,8 @@ function App() {
   }
 
   function handleClear() {
-    //reset the timer back to the original amount that the user inputted IF there was input
     setMinutes(input ? input : 10);
     setSeconds(0);
-
-    //stop the timer
     setIsRunning(false);
     setButtonText("Start");
     setTimeEditable(true);
@@ -65,9 +63,15 @@ function App() {
   }
 
   function handleClick() {
-    setIsInputField((prevInputField) => !prevInputField);
+    setIsInputField(true);  // Show the input field
+    setShouldFocusInput(true)
   }
 
+  useEffect(() => {
+    if (shouldFocusInput && isInputField && inputRef.current) {
+      inputRef.current.focus();  // Focus the input after it becomes visible
+    }
+  }, [shouldFocusInput, isInputField]);
 
   useEffect(() => {
     if (!isRunning) return;
@@ -82,7 +86,6 @@ function App() {
         return;
       }
 
-      // handle the seconds
       setSeconds((prevSecond) => {
         if (prevSecond > 0) {
           return prevSecond - 1;
@@ -91,7 +94,6 @@ function App() {
         }
       });
 
-      // handle the minutes
       if (seconds === 0) {
         setMinutes((prevMinutes) => {
           if (prevMinutes > 0) {
@@ -104,7 +106,6 @@ function App() {
     };
 
     const timeoutID = setTimeout(tick, 1000);
-
     return () => clearTimeout(timeoutID);
   }, [seconds, isRunning]);
 
@@ -117,11 +118,9 @@ function App() {
             placeholder={focusSession === "" ? "Task for this session?" : ""}
             ref={inputRef}
             className="app__focusInput"
-            onFocus={() => setIsInputField(true)} // Only track the input being active
             onChange={handleSetFocus}
             onBlur={handleBlur}
             value={focusSession}
-            
           />
         ) : (
           <h1 className="app__focusSession" onClick={handleClick}>
@@ -139,8 +138,6 @@ function App() {
           handleStartStop={handleStartStop}
           handleClear={handleClear}
         />
-        {/* <p className="app__sessionCount">Sessions: {sessions}</p> */}
-
       </div>
     </main>
   );

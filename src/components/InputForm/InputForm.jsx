@@ -13,7 +13,7 @@ function InputForm({
     <form onSubmit={handleStartStop} className="inputForm">
       <input
         type="number"
-        placeholder="# minutes"
+        placeholder="mins"
         value={input}
         onChange={({target}) => setInput(target.value)}
         disabled={timeEditable ? false : true}
