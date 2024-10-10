@@ -1,0 +1,40 @@
+.completionScreen {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20vh;
+    font-family: sans-serif;
+    font-size: 2.125rem;
+
+    &__title {
+        text-align: center;
+    }
+
+    &__subtitle {
+        margin-top: 2rem;
+        font-size: 2rem;
+    }
+
+    &__buttons {
+        display: flex;
+        margin-top: 2rem;
+        width: 100%;
+        justify-content: center;
+        gap: 1rem;
+        
+    }
+
+    &__button {
+        padding: 0.75rem 2rem;
+        font-size: 1.15rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: 500;
+        font-family: "Jost", sans-serif;
+        background: rgb(50, 50, 50);
+        color: white;
+        cursor: pointer;
+
+    }
+}
