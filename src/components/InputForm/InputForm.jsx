@@ -24,7 +24,7 @@ function InputForm({
           {buttonText}
         </button>
         <button type="button" onClick={handleClear} className="inputForm__button">
-          Clear
+          Restart
         </button>
       </div>
     </form>
