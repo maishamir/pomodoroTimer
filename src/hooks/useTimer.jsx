@@ -73,8 +73,7 @@ function useTimer(initialMinutes = 10, sessionType) {
         if (prevSecond > 0) {
           return prevSecond - 1;
         } else {
-          // return 59;
-          return 1; //TODO: REMOVE BEFORE PUSHING TO MAIN; ONLY FOR TESTING PURPOSES
+          return 59;
         }
       });
 
