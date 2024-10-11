@@ -4,15 +4,19 @@ import CompletionScreen from "./components/CompletionScreen/CompletionScreen";
 import BreakScreen from "./components/BreakScreen/BreakScreen";
 
 function App() {
-  const [sessionType, setSessionType] = useState("active");
+  const [screen, setScreen] = useState("active");
+
+  function handleChangeScreen(newScreen) {
+    setScreen(newScreen)
+  }
 
   return (
     <>
-      {sessionType == "active" && <ActiveSession />}
+      {screen == "active" && <ActiveSession changeScreen={handleChangeScreen} />}
       {/* {sessionType == "longBreak" && <BreakScreen type={"long"}/>} */}
-      {sessionType == "shortBreak" && <BreakScreen type={"short"}/>}
+      {screen == "break" && <BreakScreen type={"short"}/>}
       {/* // <ActiveSession /> */}
-      {/* // <CompletionScreen /> */}
+      {screen == "complete" && <CompletionScreen />}
     </>
   );
 }

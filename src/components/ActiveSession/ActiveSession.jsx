@@ -4,7 +4,7 @@ import InputForm from "../InputForm/InputForm";
 import TimerDisplay from "../TimerDisplay/TimerDisplay";
 
 import useTimer from "../../hooks/useTimer";
-function ActiveSession() {
+function ActiveSession({changeScreen}) {
   const [input, setInput] = useState();
 
   const [isInputField, setIsInputField] = useState(true);
@@ -34,6 +34,16 @@ function ActiveSession() {
     setIsInputField(true);  // Show the input field
     setShouldFocusInput(true)
   }
+
+  useEffect(() => {
+    if (minutes === 0 && seconds === 0) {
+      const delay = setTimeout(() => {
+        changeScreen("complete")
+      }, 2800)
+
+      return () => clearTimeout(delay)
+    }
+  }, [minutes, seconds])
 
   useEffect(() => {
     if (shouldFocusInput && isInputField && inputRef.current) {
