@@ -27,8 +27,6 @@ function useTimer(initialMinutes, sessionType) {
       setIsRunning(false);
       setButtonText("Start");
     } else {
-      setMinutes(initialMinutes);
-      setSeconds(0);
       setIsRunning(true);
       setButtonText("Pause");
     }
@@ -37,6 +35,8 @@ function useTimer(initialMinutes, sessionType) {
 
   // function to reset/clear the timer
   function handleClear() {
+    console.log("CLEARED BREAK TIMER; SHOULD BE 5");
+    
     setMinutes(initialMinutes);
     setSeconds(0);
     setIsRunning(false);

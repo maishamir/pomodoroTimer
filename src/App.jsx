@@ -13,10 +13,9 @@ function App() {
   return (
     <>
       {screen == "active" && <ActiveSession changeScreen={handleChangeScreen} />}
-      {/* {sessionType == "longBreak" && <BreakScreen type={"long"}/>} */}
-      {screen == "break" && <BreakScreen type={"short"}/>}
-      {/* // <ActiveSession /> */}
-      {screen == "complete" && <CompletionScreen />}
+      {screen == "shortBreak" && <BreakScreen type={"shortBreak"} changeScreen={handleChangeScreen}/>}
+      {screen == "longBreak" && <BreakScreen type={"longBreak"} changeScreen={handleChangeScreen}/>}
+      {screen == "complete" && <CompletionScreen changeScreen={handleChangeScreen} />}
     </>
   );
 }
