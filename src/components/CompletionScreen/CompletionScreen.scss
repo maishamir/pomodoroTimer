@@ -1,5 +1,5 @@
 .completionScreen {
-    height: 100vh;
+    height: 900vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,6 +9,13 @@
 
     &__title {
         text-align: center;
+    }
+
+    &__choices {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2.75rem;
     }
 
     &__subtitle {
