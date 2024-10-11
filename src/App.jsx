@@ -8,13 +8,14 @@ function App() {
 
   function handleChangeScreen(newScreen) {
     setScreen(newScreen)
+    // alert(newScreen)
   }
 
   return (
     <>
       {screen == "active" && <ActiveSession changeScreen={handleChangeScreen} />}
-      {screen == "shortBreak" && <BreakScreen type={"shortBreak"} changeScreen={handleChangeScreen}/>}
-      {screen == "longBreak" && <BreakScreen type={"longBreak"} changeScreen={handleChangeScreen}/>}
+      {screen == "shortBreak" && <BreakScreen session={"shortBreak"} changeScreen={handleChangeScreen}/>}
+      {screen == "longBreak" && <BreakScreen session={"longBreak"} changeScreen={handleChangeScreen}/>}
       {screen == "complete" && <CompletionScreen changeScreen={handleChangeScreen} />}
     </>
   );

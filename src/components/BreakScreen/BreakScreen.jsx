@@ -5,17 +5,10 @@ import useSound from "use-sound";
 import useTimer from "../../hooks/useTimer"
 import "./BreakScreen.scss";
 
-function BreakScreen({ type, changeScreen }) {
+function BreakScreen({ session, changeScreen }) {
   
-  // set the timer based on user selection
-  var timeToSet;
-  if (type === "shortBreak") {
-    timeToSet = { minutes: 5, seconds: 0 };
-  } else if (type === "longBreak") {
-    timeToSet = { minutes: 10, seconds: 0 };
-  }
 
-  const {minutes, seconds, buttonText, handleStartStop, handleClear} = useTimer(timeToSet.minutes, "break")
+  const {minutes, seconds, buttonText, handleStartStop, handleClear} = useTimer(10, session)
 
   useEffect(() => {
     if (minutes === 0 && seconds === 0) {
@@ -29,7 +22,6 @@ function BreakScreen({ type, changeScreen }) {
 
   // function to start timer
 
-  const [timer, setTimer] = useState(timeToSet);
   return (
     <div className="breakScreen">
       <h1 className="breakScreen__title">Break</h1>

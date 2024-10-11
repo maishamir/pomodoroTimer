@@ -5,11 +5,16 @@ import useSound from "use-sound";
 function useTimer(initialMinutes = 10, sessionType) {
   //define states for minutes, seconds, and isRunning
   //states common between active sessions and breaks
+  if (sessionType === "shortBreak") {
+    initialMinutes = 5;
+  } else if (sessionType === "longBreak") {
+    initialMinutes = 10;
+  }
   const [minutes, setMinutes] = useState(initialMinutes);
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [buttonText, setButtonText] = useState("Start");
-  const [isTimerCleared, setIsTimerCleared] = useState(false);
+  const [isTimerCleared, setIsTimerCleared] = useState(true);
 
   // only for active sessions
   const [timeEditable, setTimeEditable] = useState(true);
@@ -22,32 +27,32 @@ function useTimer(initialMinutes = 10, sessionType) {
 
   // function to start timer
   function handleStartStop(e) {
-  e.preventDefault();
+    e.preventDefault();
 
-  // The input (minutes) comes from ActiveSession
-  if (isRunning) {
-    setIsRunning(false);
-    setButtonText("Start");
-  } else {
-    if (isTimerCleared) {
-      setMinutes(initialMinutes);  // Reset to inputted or default minutes
-      setSeconds(0);
-      setIsTimerCleared(false);
+    // The input (minutes) comes from ActiveSession
+    if (isRunning) {
+      setIsRunning(false);
+      setButtonText("Start");
+    } else {
+      if (isTimerCleared) {
+        setMinutes(initialMinutes); // Reset to inputted or default minutes
+        setSeconds(0);
+        setIsTimerCleared(false);
+      }
+      setIsRunning(true);
+      setButtonText("Pause");
     }
-    setIsRunning(true);
-    setButtonText("Pause");
-  }
 
-  sessionType === "active" && setTimeEditable(false);
-}
+    sessionType === "active" && setTimeEditable(false);
+  }
 
   // function to reset/clear the timer
   function handleClear() {
-    setMinutes(initialMinutes || 10)
+    setMinutes(initialMinutes || 10);
     setSeconds(0);
     setIsRunning(false);
     setButtonText("Start");
-    setIsTimerCleared(true)
+    setIsTimerCleared(true);
     sessionType === "active" && setTimeEditable(true);
   }
 
