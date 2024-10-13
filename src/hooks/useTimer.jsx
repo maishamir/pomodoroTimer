@@ -56,41 +56,43 @@ function useTimer(initialMinutes = 10, sessionType) {
     sessionType === "active" && setTimeEditable(true);
   }
 
-  // useEffect to run the timer; only works when timer is running; obvs lol
-  useEffect(() => {
-    if (!isRunning) return;
+useEffect(() => {
+  if (!isRunning) return;
 
-    const tick = () => {
-      if (seconds === 0 && minutes === 0) {
-        playSound();
-        setIsRunning(false);
-        setButtonText("Start");
-        sessionType === "active" && setTimeEditable(true);
-        return;
-      }
+  const startTime = Date.now();
+  const totalTime = (minutes * 60 + seconds) * 1000; // total time in milliseconds
+  const endTime = startTime + totalTime;
 
-      setSeconds((prevSecond) => {
-        if (prevSecond > 0) {
-          return prevSecond - 1;
-        } else {
-          return 59;
-        }
-      });
+  function countDown() {
+    const currentTime = Date.now();
+    const timeRemaining = endTime - currentTime;
 
-      if (seconds === 0) {
-        setMinutes((prevMinutes) => {
-          if (prevMinutes > 0) {
-            return prevMinutes - 1;
-          } else {
-            return 0;
-          }
-        });
-      }
-    };
+    if (timeRemaining <= 0) {
+      setMinutes(0);
+      setSeconds(0);
+      setIsRunning(false);
+      console.log("About to play sound")
+      playSound();
+      return;
+    }
 
-    const timeoutID = setTimeout(tick, 1000);
-    return () => clearTimeout(timeoutID);
-  }, [seconds, isRunning]);
+    const minutesRemaining = Math.floor(timeRemaining / 60000);
+    const secondsRemaining = Math.ceil((timeRemaining % 60000) / 1000);
+
+    setMinutes(minutesRemaining);
+    setSeconds(secondsRemaining); // Fix for initial "59 seconds"
+  }
+
+  // Call countDown immediately to avoid initial delay
+  // countDown();
+
+  // Set interval for countdown
+  const intervalId = setInterval(countDown, 1000);
+
+  return () => clearInterval(intervalId);
+}, [isRunning]);
+
+
 
   return {
     minutes,
