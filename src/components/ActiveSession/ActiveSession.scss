@@ -11,22 +11,43 @@
   height: 90vh;
   margin-top: 20vh;
 
-  &__focusInput {
-    padding: 1rem 0.5rem;
-    font-size: 2.125rem;
-    field-sizing: content;
-    width: 350px;
-    border: none;
+  &__focus {
+    display: flex;
+    align-items: center;
+    padding-bottom: 0;
+    width: 100vw;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  &__focusInput,
+  &__focusSession {
+    font-size: 2.3rem;
     text-align: left;
+    font-family: sans-serif;
+    font-weight: 400;
+    padding: 1rem 0.5rem;
+    text-wrap: nowrap;
+  }
+
+  &__focusInput {
+    border: none;
+    // background: transparent;
+    outline: none;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    width: 40vw;
+    text-align: center;
 
     &::placeholder {
-      text-align: center;
+      font-size: 2.3rem;
+      color: grey;
     }
 
     &:focus {
-      border-bottom: 2px solid gray;
       outline: none;
       caret-color: rgb(195, 0, 195);
+      border-bottom: 1px solid gray;
     }
 
     &::selection {
@@ -35,11 +56,16 @@
   }
 
   &__focusSession {
-    padding: 1rem;
-    font-size: 2.125rem;
-    font-family: sans-serif;
-    font-weight: 400;
     cursor: pointer;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease-in-out;
+    word-wrap: none;
+    text-align: center;
+    color: rgb(104, 102, 102);
+
+    &:hover {
+      color: grey;
+    }
   }
 
   &__timerDisplay {

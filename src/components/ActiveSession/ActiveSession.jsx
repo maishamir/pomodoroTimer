@@ -2,9 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import "./ActiveSession.scss";
 import InputForm from "../InputForm/InputForm";
 import TimerDisplay from "../TimerDisplay/TimerDisplay";
-
 import useTimer from "../../hooks/useTimer";
-function ActiveSession({changeScreen}) {
+import EditIcon from "@mui/icons-material/Edit";
+
+function ActiveSession({ changeScreen }) {
   const [input, setInput] = useState();
 
   const [isInputField, setIsInputField] = useState(true);
@@ -12,11 +13,18 @@ function ActiveSession({changeScreen}) {
 
   const [sessions, setSessions] = useState(0);
 
-  const [shouldFocusInput, setShouldFocusInput] = useState(false)
+  const [shouldFocusInput, setShouldFocusInput] = useState(false);
 
   const inputRef = useRef(null);
 
-  const {minutes, seconds, buttonText, handleStartStop, timeEditable, handleClear} = useTimer(input || 10, "active")
+  const {
+    minutes,
+    seconds,
+    buttonText,
+    handleStartStop,
+    timeEditable,
+    handleClear,
+  } = useTimer(input || 10, "active");
 
   function handleBlur(e) {
     if (e.target.value === "") {
@@ -31,44 +39,47 @@ function ActiveSession({changeScreen}) {
   }
 
   function handleClick() {
-    setIsInputField(true);  // Show the input field
-    setShouldFocusInput(true)
+    setIsInputField(true); // Show the input field
+    setShouldFocusInput(true);
   }
 
   useEffect(() => {
     if (minutes === 0 && seconds === 0) {
       const delay = setTimeout(() => {
-        changeScreen("complete")
-      }, 2800)
+        changeScreen("complete");
+      }, 2800);
 
-      return () => clearTimeout(delay)
+      return () => clearTimeout(delay);
     }
-  }, [minutes, seconds])
+  }, [minutes, seconds]);
 
   useEffect(() => {
     if (shouldFocusInput && isInputField && inputRef.current) {
-      inputRef.current.focus();  // Focus the input after it becomes visible
+      inputRef.current.focus(); // Focus the input after it becomes visible
     }
   }, [shouldFocusInput, isInputField]);
 
   return (
     <main className="app">
       <div className="app__focus">
-        {isInputField ? (
-          <input
-            type="text"
-            placeholder={focusSession === "" ? "Task for this session?" : ""}
-            ref={inputRef}
-            className="app__focusInput"
-            onChange={handleSetFocus}
-            onBlur={handleBlur}
-            value={focusSession}
-          />
-        ) : (
-          <h1 className="app__focusSession" onClick={handleClick}>
-            {focusSession}
-          </h1>
-        )}
+        <EditIcon fontSize="medium" />
+        <div className="app_setFocus">
+          {isInputField ? (
+            <input
+              type="text"
+              placeholder={focusSession === "" ? "What's the focus for this session?" : ""}
+              ref={inputRef}
+              className="app__focusInput"
+              onChange={handleSetFocus}
+              onBlur={handleBlur}
+              value={focusSession}
+            />
+          ) : (
+            <h1 className="app__focusSession" onClick={handleClick}>
+              {focusSession}
+            </h1>
+          )}
+        </div>
       </div>
       <div className="app__timerDisplay">
         <TimerDisplay minutes={minutes} seconds={seconds} />
