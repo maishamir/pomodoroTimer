@@ -1,5 +1,6 @@
 import React from "react";
 import "./InputForm.scss";
+import restartIcon from "../../assets/restart.svg"
 
 function InputForm({
   input,
@@ -23,9 +24,7 @@ function InputForm({
         <button type="submit" className="inputForm__button">
           {buttonText}
         </button>
-        <button type="button" onClick={handleClear} className="inputForm__button">
-          Restart
-        </button>
+        <img src={restartIcon} onClick={handleClear} alt="" className="inputForm__icon" />
       </div>
     </form>
   );
