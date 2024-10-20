@@ -9,7 +9,45 @@
   flex-direction: column;
   align-items: center;
   height: 90vh;
-  margin-top: 20vh;
+  padding-top: 20vh;
+
+  &__editIcon {
+    padding: 0.4rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.05s ease-in-out;
+
+    &:hover {
+      background: rgb(227, 226, 226);
+      border-radius: 0.5rem;
+    }
+
+    &--active {
+      background: lightgray;
+    }
+  }
+  
+
+  &__focus {
+    display: flex;
+    align-items: center;
+    padding-bottom: 0;
+    width: 100vw;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  &__focusInput,
+  &__focusSession {
+    font-size: 2.3rem;
+    text-align: left;
+    font-family: sans-serif;
+    font-weight: 400;
+    padding: 1rem 0.5rem;
+    text-wrap: nowrap;
+  }
 
   &__focusInput {
     padding: 1rem 0.5rem;

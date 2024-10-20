@@ -8,6 +8,8 @@
     font-size: 2.125rem;
 
     &__title {
+        font-size: 3rem;
+        padding: 1rem 0.5rem;
         text-align: center;
     }
 
@@ -15,33 +17,44 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 2.75rem;
+        margin-top: 3rem;
+        justify-content: center;
     }
 
     &__subtitle {
-        margin-top: 2rem;
+        // margin-top: 2rem;
         font-size: 2rem;
     }
 
     &__buttons {
         display: flex;
-        margin-top: 2rem;
+        // visibility: hidden;
+        margin-top: 5rem;
         width: 100%;
         justify-content: center;
-        gap: 1rem;
+        gap: 2rem;
         
     }
 
     &__button {
-        padding: 0.75rem 2rem;
-        font-size: 1.15rem;
+        padding: 1rem;
         border: none;
-        border-radius: 8px;
-        font-weight: 500;
-        font-family: "Jost", sans-serif;
+        border-radius: 1rem;
         background: rgb(50, 50, 50);
-        color: white;
+        // box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 12px;
         cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover {
+            background: rgb(6, 6, 6);
+            box-shadow: rgba(0, 0, 0, 0.446) 0px 5px 15px;
+            transform: translateY(-5px)
+        }
+
+        img {
+            height: 3rem;
+            width: 3rem;
+        }
 
     }
 }
