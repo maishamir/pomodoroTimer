@@ -70,7 +70,6 @@ function useTimer(initialMinutes = 10, sessionType) {
         setMinutes(0);
         setSeconds(0);
         setIsRunning(false);
-        // console.log("About to play sound");
         playSound();
         return;
       }
@@ -80,17 +79,12 @@ function useTimer(initialMinutes = 10, sessionType) {
       if (secondsRemaining === 60) {
          secondsRemaining = 0
         minutesRemaining = Math.ceil(timeRemaining / 60000);
-        // console.log(`rounded up: ${minutesRemaining}`);
       } else {
         minutesRemaining = Math.floor(timeRemaining / 60000);
-        // console.log(`rounded down: ${minutesRemaining}`);
       }
       setMinutes(minutesRemaining)
       setSeconds(secondsRemaining)
     }
-
-    // Call countDown immediately to avoid initial delay
-    // countDown();
 
     // Set interval for countdown
     const intervalId = setInterval(countDown, 1000);

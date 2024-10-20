@@ -8,7 +8,6 @@ function App() {
 
   function handleChangeScreen(newScreen) {
     setScreen(newScreen)
-    // alert(newScreen)
   }
 
   return (
