@@ -3,12 +3,14 @@ import TimerDisplay from "../TimerDisplay/TimerDisplay";
 import notificationSound from "../../assets/Timer complete.mp3";
 import useSound from "use-sound";
 import useTimer from "../../hooks/useTimer"
+import InputForm from "../InputForm/InputForm";
 import "./BreakScreen.scss";
 
 function BreakScreen({ session, changeScreen }) {
-  
 
-  const {minutes, seconds, buttonText, handleStartStop, handleClear} = useTimer(10, session)
+  const [input, setInput] = useState();
+  const { minutes, seconds, buttonText, handleStartStop, handleClear, timeEditable } = useTimer(input || 5, session)
+
 
   useEffect(() => {
     if (minutes === 0 && seconds === 0) {
@@ -29,10 +31,18 @@ function BreakScreen({ session, changeScreen }) {
       <div className="breakScreen__timerDisplay">
         <TimerDisplay minutes={minutes} seconds={seconds} />
         <div className="breakScreen__buttons">
-          <button className="breakScreen__button" onClick={handleStartStop}>{buttonText}</button>
-          <button className="breakScreen__button" onClick={handleClear}>Reset</button>
+          {/* <button className="breakScreen__button" onClick={handleStartStop}>{buttonText}</button>
+          <button className="breakScreen__button" onClick={handleClear}>Reset</button> */}
           <button className="breakScreen__button" onClick={() => changeScreen("active")}>Skip</button>
         </div>
+        <InputForm
+          input={input}
+          setInput={setInput}
+          buttonText={buttonText}
+          timeEditable={timeEditable}
+          handleStartStop={handleStartStop}
+          handleClear={handleClear}
+        />
       </div>
     </div>
   );

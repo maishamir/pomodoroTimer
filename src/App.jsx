@@ -13,8 +13,7 @@ function App() {
   return (
     <>
       {screen == "active" && <ActiveSession changeScreen={handleChangeScreen} />}
-      {screen == "shortBreak" && <BreakScreen session={"shortBreak"} changeScreen={handleChangeScreen}/>}
-      {screen == "longBreak" && <BreakScreen session={"longBreak"} changeScreen={handleChangeScreen}/>}
+      {screen == "break" && <BreakScreen session={"break"} changeScreen={handleChangeScreen}/>}
       {screen == "complete" && <CompletionScreen changeScreen={handleChangeScreen} />}
     </>
   );

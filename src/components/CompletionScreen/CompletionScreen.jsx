@@ -21,12 +21,12 @@ function CompletionScreen({ changeScreen }) {
       <div className="completionScreen__choices">
         <h2 className="completionScreen__subtitle">What's next?</h2>
         <div className="completionScreen__buttons">
-          <button className="completionScreen__button" onClick={chooseSession} value="shortBreak">
+          <button className="completionScreen__button" onClick={chooseSession} value="break">
             <img src={teaCupIcon} alt="" className="completionScreen__icon"/>
           </button>
-          <button className="completionScreen__button" onClick={chooseSession} value="longBreak">
+          {/* <button className="completionScreen__button" onClick={chooseSession} value="longBreak">
             <img src={sunshineIcon} alt="" className="completionScreen__icon"/>
-          </button>
+          </button> */}
           <button className="completionScreen__button" onClick={chooseSession} value="active">
             <img src={clockIcon} alt="" className="completionScreen__icon"/>
           </button>

@@ -3,13 +3,7 @@ import notificationSound from "../assets/Timer complete.mp3";
 import useSound from "use-sound";
 
 function useTimer(initialMinutes = 10, sessionType) {
-  //define states for minutes, seconds, and isRunning
-  //states common between active sessions and breaks
-  if (sessionType === "shortBreak") {
-    initialMinutes = 5;
-  } else if (sessionType === "longBreak") {
-    initialMinutes = 10;
-  }
+
   const [minutes, setMinutes] = useState(initialMinutes);
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
@@ -42,7 +36,7 @@ function useTimer(initialMinutes = 10, sessionType) {
       setButtonText("Pause");
     }
 
-    sessionType === "active" && setTimeEditable(false);
+    setTimeEditable(false)
   }
 
   // function to reset/clear the timer
@@ -52,7 +46,7 @@ function useTimer(initialMinutes = 10, sessionType) {
     setIsRunning(false);
     setButtonText("Start");
     setIsTimerCleared(true);
-    sessionType === "active" && setTimeEditable(true);
+    setTimeEditable(true);
   }
 
   useEffect(() => {
