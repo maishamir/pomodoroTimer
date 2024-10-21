@@ -10,20 +10,41 @@ function InputForm({
   timeEditable,
   handleStartStop,
   handleClear,
-  status = "active"
+  status = "active",
 }) {
+  // function renderInputForm(status) {
+  //   switch (status) {
+  //     case "active" || "break":
+  //       return (
+  //         <input
+  //           type="number"
+  //           placeholder="mins"
+  //           value={input}
+  //           onChange={({ target }) => setInput(target.value)}
+  //           disabled={timeEditable ? false : true}
+  //           className="inputForm__input"
+  //         />
+  //       );
+  //     default:
+  //       return
+  //   }
+  // }
 
   return (
     <form onSubmit={handleStartStop} className="inputForm">
-      <input
+      {status !== 'complete' && <input
         type="number"
         placeholder="mins"
         value={input}
-        onChange={({target}) => setInput(target.value)}
+        onChange={({ target }) => setInput(target.value)}
         disabled={timeEditable ? false : true}
         className="inputForm__input"
+      />}
+      <Buttons
+        status={status}
+        buttonText={buttonText}
+        handleClear={handleClear}
       />
-      <Buttons status={status} buttonText={buttonText} handleClear={handleClear} />
     </form>
   );
 }
