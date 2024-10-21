@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import ActiveSession from "./components/ActiveSession/ActiveSession";
 import CompletionScreen from "./components/CompletionScreen/CompletionScreen";
 import BreakScreen from "./components/BreakScreen/BreakScreen";
+import Header from "./components/Header/Header";
 
 function App() {
   const [screen, setScreen] = useState("active");
+  const [status, setStatus] = useState("active")
 
   function handleChangeScreen(newScreen) {
     setScreen(newScreen)
@@ -12,9 +14,10 @@ function App() {
 
   return (
     <>
-      {screen == "active" && <ActiveSession changeScreen={handleChangeScreen} />}
+      <Header status={status} />
+      {/* {screen == "active" && <ActiveSession changeScreen={handleChangeScreen} />}
       {screen == "break" && <BreakScreen session={"break"} changeScreen={handleChangeScreen}/>}
-      {screen == "complete" && <CompletionScreen changeScreen={handleChangeScreen} />}
+      {screen == "complete" && <CompletionScreen changeScreen={handleChangeScreen} />} */}
     </>
   );
 }
