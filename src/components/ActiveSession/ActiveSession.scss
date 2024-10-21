@@ -10,6 +10,26 @@
   align-items: center;
   height: 90vh;
   padding-top: 20vh;
+  position: relative;
+  width: 60%;
+  // background: #000;
+  margin: 0 auto;
+
+  &__editIcon {
+    position: absolute;
+    opacity: 0;
+    left: 2%;
+    background-color: lightgray;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.15s ease;
+    &--active {
+      opacity: 1;
+      background-color: lightgray;
+      padding: 0.5rem;
+      border-radius: 8px;
+    }
+  }
 
   &__focus {
     display: flex;
@@ -40,7 +60,7 @@
 
     &::placeholder {
       font-size: 2.3rem;
-      color: grey;
+      color: rgb(69, 68, 68);
     }
 
     &:focus {
@@ -63,7 +83,7 @@
     color: rgb(104, 102, 102);
 
     &:hover {
-      color: grey;
+      color: rgb(69, 68, 68);
     }
   }
 
@@ -78,3 +98,8 @@
     margin-top: 1rem;
   }
 }
+
+.app__focus:hover .app__editIcon {
+  opacity: 0.5;
+}
+

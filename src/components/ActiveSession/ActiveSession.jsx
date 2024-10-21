@@ -8,12 +8,10 @@ import EditIcon from "@mui/icons-material/Edit";
 function ActiveSession({ changeScreen }) {
   const [input, setInput] = useState();
 
-  const [isInputField, setIsInputField] = useState(true);
   const [focusSession, setFocusSession] = useState("");
-
+  const [isEditing, setIsEditing] = useState(false);
   const [sessions, setSessions] = useState(0);
 
-  const [shouldFocusInput, setShouldFocusInput] = useState(false);
 
   const inputRef = useRef(null);
 
@@ -27,11 +25,7 @@ function ActiveSession({ changeScreen }) {
   } = useTimer(input || 10, "active");
 
   function handleBlur(e) {
-    if (e.target.value === "") {
-      setIsInputField(true);
-    } else {
-      setIsInputField(false);
-    }
+    setIsEditing(false);
   }
 
   function handleSetFocus(e) {
@@ -39,8 +33,12 @@ function ActiveSession({ changeScreen }) {
   }
 
   function handleClick() {
-    setIsInputField(true); // Show the input field
-    setShouldFocusInput(true);
+    setIsEditing(true);
+    setTimeout(() => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    });
   }
 
   useEffect(() => {
@@ -53,30 +51,35 @@ function ActiveSession({ changeScreen }) {
     }
   }, [minutes, seconds]);
 
-  useEffect(() => {
-    if (shouldFocusInput && isInputField && inputRef.current) {
-      inputRef.current.focus(); // Focus the input after it becomes visible
-    }
-  }, [shouldFocusInput, isInputField]);
 
   return (
     <main className="app">
       <div className="app__focus">
-        <EditIcon fontSize="medium" />
+        <p
+          className={`app__editIcon ${
+            isEditing ? "app__editIcon--active" : ""
+            }`}
+          style={{ opacity: isEditing && 1 }}
+        >
+          <EditIcon fontSize="medium" />
+        </p>
+
         <div className="app_setFocus">
-          {isInputField ? (
+          {isEditing ? (
             <input
               type="text"
-              placeholder={focusSession === "" ? "What's the focus for this session?" : ""}
+              placeholder={focusSession === "" ? "Click to set a focus" : ""}
               ref={inputRef}
               className="app__focusInput"
               onChange={handleSetFocus}
               onBlur={handleBlur}
               value={focusSession}
+              maxLength="40"
+              onKeyDown={(e) => { if (e.key === "Enter") handleBlur() }}
             />
           ) : (
-            <h1 className="app__focusSession" onClick={handleClick}>
-              {focusSession}
+            <h1 className="app__focusSession" onClick={handleClick} >
+              {focusSession || "Click to set a focus"}
             </h1>
           )}
         </div>
