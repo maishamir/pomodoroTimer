@@ -1,6 +1,7 @@
 import React from "react";
 import "./InputForm.scss";
-import restartIcon from "../../assets/restart.svg"
+// import restartIcon from "../../assets/restart.svg"
+import Buttons from "../Buttons/Buttons";
 
 function InputForm({
   input,
@@ -9,7 +10,9 @@ function InputForm({
   timeEditable,
   handleStartStop,
   handleClear,
+  status = "active"
 }) {
+
   return (
     <form onSubmit={handleStartStop} className="inputForm">
       <input
@@ -20,12 +23,7 @@ function InputForm({
         disabled={timeEditable ? false : true}
         className="inputForm__input"
       />
-      <div className="inputForm__buttons">
-        <button type="submit" className="inputForm__button">
-          {buttonText}
-        </button>
-        <img src={restartIcon} onClick={handleClear} alt="" className="inputForm__icon" />
-      </div>
+      <Buttons status={status} buttonText={buttonText} handleClear={handleClear} />
     </form>
   );
 }
