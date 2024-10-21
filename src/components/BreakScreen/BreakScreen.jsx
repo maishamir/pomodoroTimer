@@ -31,10 +31,6 @@ function BreakScreen({ session, changeScreen }) {
       <div className="breakScreen__timerDisplay">
         <TimerDisplay minutes={minutes} seconds={seconds} />
         <div className="breakScreen__buttons">
-          {/* <button className="breakScreen__button" onClick={handleStartStop}>{buttonText}</button>
-          <button className="breakScreen__button" onClick={handleClear}>Reset</button> */}
-          <button className="breakScreen__button" onClick={() => changeScreen("active")}>Skip</button>
-        </div>
         <InputForm
           input={input}
           setInput={setInput}
@@ -43,6 +39,8 @@ function BreakScreen({ session, changeScreen }) {
           handleStartStop={handleStartStop}
           handleClear={handleClear}
         />
+          <button className="breakScreen__button" onClick={() => changeScreen("active")}>Skip</button>
+          </div>
       </div>
     </div>
   );
