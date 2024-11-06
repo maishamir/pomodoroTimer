@@ -17,11 +17,11 @@ function CompletionScreen() {
       <div className="completionScreen__choices">
         <h2 className="completionScreen__subtitle">What's next?</h2>
         <div className="completionScreen__buttons">
-          <button className="completionScreen__button" onClick={() => navigate("/active")}>
+          <button className="completionScreen__button" onClick={() => navigate("/break")}>
             <img src={teaCupIcon} alt="" className="completionScreen__icon"/>
           </button>
           
-          <button className="completionScreen__button" onClick={() => navigate("/break")}>
+          <button className="completionScreen__button" onClick={() => navigate("/active")}>
             <img src={clockIcon} alt="" className="completionScreen__icon"/>
           </button>
         </div>

@@ -3,8 +3,9 @@ import TimerDisplay from "../TimerDisplay/TimerDisplay";
 import notificationSound from "../../assets/Timer complete.mp3";
 import useSound from "use-sound";
 import useTimer from "../../hooks/useTimer"
-import InputForm from "../InputForm/InputForm";
+// import InputForm from "../InputForm/InputForm";
 import "./BreakScreen.scss";
+import TimerButtons from "../TimerButtons/TimerButtons";
 import { useNavigate } from "react-router-dom";
 
 function BreakScreen({ session }) {
@@ -34,16 +35,8 @@ function BreakScreen({ session }) {
       <div className="breakScreen__timerDisplay">
         <TimerDisplay minutes={minutes} seconds={seconds} />
         <div className="breakScreen__buttons">
-        <InputForm
-          input={input}
-          setInput={setInput}
-          buttonText={buttonText}
-          timeEditable={timeEditable}
-          handleStartStop={handleStartStop}
-          handleClear={handleClear}
-        />
-          <button className="breakScreen__button" onClick={() => navigate("/")}>Skip</button>
-          </div>
+          <TimerButtons input={input} setInput={setInput} buttonText={buttonText} timeEditable={timeEditable} handleStartStop={handleStartStop} handleClear={handleClear} skip={true}/>
+        </div>
       </div>
     </div>
   );

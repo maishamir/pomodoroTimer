@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import "./ActiveSession.scss";
-import InputForm from "../InputForm/InputForm";
+// import InputForm from "../InputForm/InputForm";
 import TimerDisplay from "../TimerDisplay/TimerDisplay";
 import useTimer from "../../hooks/useTimer";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
+import TimerButtons from "../TimerButtons/TimerButtons";
 
 
 function ActiveSession() {
@@ -90,14 +91,23 @@ function ActiveSession() {
       </div>
       <div className="app__timerDisplay">
         <TimerDisplay minutes={minutes} seconds={seconds} />
-        <InputForm
+        {/* <InputForm
           input={input}
           setInput={setInput}
           buttonText={buttonText}
           timeEditable={timeEditable}
           handleStartStop={handleStartStop}
           handleClear={handleClear}
-        />
+        /> */}
+        <TimerButtons input={input}
+          setInput={setInput}
+          buttonText={buttonText}
+          timeEditable={timeEditable}
+          handleStartStop={handleStartStop}
+          handleClear={handleClear} 
+          skip={false}
+          />
+          
       </div>
     </main>
   );

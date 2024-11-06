@@ -1,4 +1,4 @@
-.inputForm {
+.timerButtons {
   margin-top: 1rem;
   display: flex;
   align-items: center;
@@ -16,6 +16,7 @@
 
   &__icon {
     width: 1.5rem;
+    cursor: pointer;
   }
 
   &__buttons {
