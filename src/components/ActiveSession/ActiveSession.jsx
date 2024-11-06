@@ -4,8 +4,12 @@ import InputForm from "../InputForm/InputForm";
 import TimerDisplay from "../TimerDisplay/TimerDisplay";
 import useTimer from "../../hooks/useTimer";
 import EditIcon from "@mui/icons-material/Edit";
+import { useNavigate } from "react-router-dom";
 
-function ActiveSession({ changeScreen }) {
+
+function ActiveSession() {
+
+  let navigate = useNavigate();
   const [input, setInput] = useState();
 
   const [focusSession, setFocusSession] = useState("");
@@ -44,7 +48,7 @@ function ActiveSession({ changeScreen }) {
   useEffect(() => {
     if (minutes === 0 && seconds === 0) {
       const delay = setTimeout(() => {
-        changeScreen("complete");
+        navigate("/complete")
       }, 2800);
 
       return () => clearTimeout(delay);

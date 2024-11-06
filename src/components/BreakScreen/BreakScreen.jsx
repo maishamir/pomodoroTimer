@@ -5,9 +5,12 @@ import useSound from "use-sound";
 import useTimer from "../../hooks/useTimer"
 import InputForm from "../InputForm/InputForm";
 import "./BreakScreen.scss";
+import { useNavigate } from "react-router-dom";
 
-function BreakScreen({ session, changeScreen }) {
+function BreakScreen({ session }) {
 
+  let navigate = useNavigate()
+  
   const [input, setInput] = useState();
   const { minutes, seconds, buttonText, handleStartStop, handleClear, timeEditable } = useTimer(input || 5, session)
 
@@ -15,7 +18,7 @@ function BreakScreen({ session, changeScreen }) {
   useEffect(() => {
     if (minutes === 0 && seconds === 0) {
       const delay = setTimeout(() => {
-        changeScreen("complete")
+        navigate("/complete")
       }, 2800)
       
       return () => clearTimeout(delay)
@@ -39,7 +42,7 @@ function BreakScreen({ session, changeScreen }) {
           handleStartStop={handleStartStop}
           handleClear={handleClear}
         />
-          <button className="breakScreen__button" onClick={() => changeScreen("active")}>Skip</button>
+          <button className="breakScreen__button" onClick={() => navigate("/")}>Skip</button>
           </div>
       </div>
     </div>

@@ -4,15 +4,11 @@ import TimerDisplay from "../TimerDisplay/TimerDisplay";
 import clockIcon from "../../assets/alarm-clock.svg";
 import teaCupIcon from "../../assets/tea-cup.svg";
 import sunshineIcon from "../../assets/sunshine.svg";
+import { useNavigate } from "react-router-dom";
 
-function CompletionScreen({ changeScreen }) {
+function CompletionScreen() {
 
-  console.log("change screen? ", changeScreen)
-  
-  function chooseSession(e) {
-    e.preventDefault();
-    changeScreen(e.currentTarget.value)
-  }
+  let navigate = useNavigate();
 
   return (
     <div className="completionScreen">
@@ -21,13 +17,11 @@ function CompletionScreen({ changeScreen }) {
       <div className="completionScreen__choices">
         <h2 className="completionScreen__subtitle">What's next?</h2>
         <div className="completionScreen__buttons">
-          <button className="completionScreen__button" onClick={chooseSession} value="break">
+          <button className="completionScreen__button" onClick={() => navigate("/active")}>
             <img src={teaCupIcon} alt="" className="completionScreen__icon"/>
           </button>
-          {/* <button className="completionScreen__button" onClick={chooseSession} value="longBreak">
-            <img src={sunshineIcon} alt="" className="completionScreen__icon"/>
-          </button> */}
-          <button className="completionScreen__button" onClick={chooseSession} value="active">
+          
+          <button className="completionScreen__button" onClick={() => navigate("/break")}>
             <img src={clockIcon} alt="" className="completionScreen__icon"/>
           </button>
         </div>
