@@ -11,7 +11,7 @@ function TimerButtons({
   timeEditable,
   handleStartStop,
   handleClear,
-  skip,
+  skip
 }) {
 
     let navigate = useNavigate();

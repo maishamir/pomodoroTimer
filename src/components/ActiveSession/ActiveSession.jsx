@@ -48,6 +48,11 @@ function ActiveSession() {
 
   useEffect(() => {
     if (minutes === 0 && seconds === 0) {
+
+      const updateCount = sessions + 1;
+      setSessions(updateCount)
+
+      localStorage.setItem("sessionCount", updateCount)
       const delay = setTimeout(() => {
         navigate("/complete")
       }, 2800);
@@ -56,6 +61,13 @@ function ActiveSession() {
     }
   }, [minutes, seconds]);
 
+  // to get the saved sessionCount from localStorage
+  useEffect(() => {
+    if ("sessionCount" in { ...localStorage }) {
+      const countNumber = Number.parseInt(localStorage.getItem("sessionCount"))
+      setSessions(countNumber)
+    }
+  }, [])
 
   return (
     <main className="app">
@@ -91,14 +103,6 @@ function ActiveSession() {
       </div>
       <div className="app__timerDisplay">
         <TimerDisplay minutes={minutes} seconds={seconds} />
-        {/* <InputForm
-          input={input}
-          setInput={setInput}
-          buttonText={buttonText}
-          timeEditable={timeEditable}
-          handleStartStop={handleStartStop}
-          handleClear={handleClear}
-        /> */}
         <TimerButtons input={input}
           setInput={setInput}
           buttonText={buttonText}
@@ -107,7 +111,7 @@ function ActiveSession() {
           handleClear={handleClear} 
           skip={false}
           />
-          
+        <p>{sessions}</p>
       </div>
     </main>
   );
