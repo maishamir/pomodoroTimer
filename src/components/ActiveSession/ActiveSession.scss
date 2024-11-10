@@ -4,16 +4,17 @@
   box-sizing: border-box;
 }
 
-.app {
+.activeSession {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 90vh;
   padding-top: 20vh;
   position: relative;
-  width: 60%;
+  width: 80%;
   // background: #000;
   margin: 0 auto;
+
 
   &__editIcon {
     position: absolute;
@@ -94,8 +95,25 @@
     margin-top: 3.5rem;
   }
 
-  &__sessionCount {
-    margin-top: 1rem;
+  &__sessionCounter {
+    position: absolute;
+    top: 7.5vh;
+    right: 0rem;
+    background-color: gray;
+    padding: 0.75rem;
+    width: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+    font-family: "Jost", sans-serif;
+    font-weight: 600;
+    border-radius: 2rem;
+  }
+
+  &__flameIcon {
+    height: 30px;
+    width: 30px;
   }
 }
 
