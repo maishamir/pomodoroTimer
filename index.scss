@@ -1,0 +1,115 @@
+@import "./src/assets/variables";
+
+body {
+  // background-image: ;
+}
+
+@keyframes aura {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.blob-outer-container {
+  //     position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100vh;
+  //   z-index: -1;
+  //   background: linear-gradient(
+  //     120deg,
+  //     #1e1e2e, /* Deep navy */
+  //     #2a2a40, /* Muted indigo */
+  //     #313151, /* Midnight blue */
+  //     #1e1e2e /* Deep navy */
+  //   );
+  //   background-size: 300% 300%;
+  //   animation: aura 15s ease infinite;
+  // // }
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 0;
+  inset: 0;
+  margin: auto;
+  // filter: blur(100px);
+}
+
+.blob-inner-container {
+  // border-radius: px;
+  // position: absolute;
+  // inset: 0;
+  // margin: auto;
+  // width: 100vw;
+  // height: 100vh;
+  // min-width: 1000px;
+  // overflow: hidden;
+  // transform: scale(0.8);
+  // filter: blur(200px);
+}
+
+.blob {
+  border-radius: 99999px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  margin: auto;
+  // background: conic-gradient(from 0deg, #441752, #8174A0, #A888B5);
+  // background: linear-gradient(
+  // 0deg,
+  // #ff99c8,
+  // #fcf6bd,
+  // #d0f4de,
+  // #a9def9,
+  // #bbd0ff  );
+  background: linear-gradient(
+    90deg,
+    hsla(0, 100%, 67%, 1) 0%,
+    hsla(0, 100%, 89%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(0, 100%, 67%, 1) 0%,
+    hsla(0, 100%, 89%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(0, 100%, 67%, 1) 0%,
+    hsla(0, 100%, 89%, 1) 100%
+  );
+
+  z-index: -10;
+
+  animation: spinBlob 8s linear infinite;
+}
+
+.texture_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("./src/assets/nnnoise.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@keyframes spinBlob {
+  0% {
+    transform: rotate(0deg) scale(2.5);
+  }
+
+  100% {
+    transform: rotate(1turn) scale(2.5);
+  }
+}
