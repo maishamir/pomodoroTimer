@@ -69,20 +69,11 @@ function ActiveSession() {
   return (
     <main className="activeSession">
       <div className="activeSession__focus">
-        <p
-          className={`activeSession__editIcon ${
-            isEditing ? "activeSession__editIcon--active" : ""
-          }`}
-          style={{ opacity: isEditing && 1 }}
-        >
-          <EditIcon fontSize="medium" />
-        </p>
-
         <div className="activeSession_setFocus">
           {isEditing ? (
             <input
               type="text"
-              placeholder={focusSession === "" ? "Click to set a focus" : ""}
+
               ref={inputRef}
               className="activeSession__focusInput"
               onChange={handleSetFocus}

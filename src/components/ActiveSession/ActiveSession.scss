@@ -52,12 +52,19 @@
   }
 
   &__focusInput {
-    border: none;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     outline: none;
     cursor: pointer;
-    border-bottom: 1px solid transparent;
+    // border-bottom: 1px solid transparent;
     width: 40vw;
     text-align: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 8px 24px;
+    backdrop-filter: blur(10px);
+    padding: 1rem 0.5rem;
+    // color: hsl(234, 37%, 22%);
+    color: white;
 
     &::placeholder {
       font-size: 2.3rem;
@@ -66,12 +73,21 @@
 
     &:focus {
       outline: none;
-      caret-color: rgb(195, 0, 195);
-      border-bottom: 1px solid gray;
+      caret-color: hsl(234, 37%, 22%); //TODO: maaaybe make a variable for dark vs light?
+      // border-bottom: 1px solid gray;
+      // border-bottom: 1px solid gray;
+      font-weight: lighter;
     }
 
     &::selection {
-      background: lavender;
+      background: rgba(255, 255, 255, 0.397);
+    }
+  }
+
+  @supports (field-sizing: content) {
+    &__focusInput {
+      width: auto;
+      field-sizing:content;
     }
   }
 
@@ -82,9 +98,11 @@
     word-wrap: none;
     text-align: center;
     color: rgb(104, 102, 102);
+    color: #faf9f6ba;
+    font-weight: lighter;
 
     &:hover {
-      color: rgb(69, 68, 68);
+      color: #faf9f6;
     }
   }
 

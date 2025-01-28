@@ -1,8 +1,10 @@
+@use "../../assets/variables" as *;
+
 .timerDisplay {
     font-family: sans-serif;
     margin-bottom: 1rem;
     text-align: center;
     font-size: 10rem;
-    font-weight: lighter;
-    color: #FAF9F6;
+    font-weight: 100;
+    color: $alabaster;
 }
