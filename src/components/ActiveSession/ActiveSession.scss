@@ -60,7 +60,7 @@
     width: 40vw;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.3);
-    box-shadow: rgba(255, 255, 255, 0.2) 0px 8px 24px;
+    // box-shadow: rgba(255, 255, 255, 0.2) 0px 8px 24px;
     backdrop-filter: blur(10px);
     padding: 1rem 0.5rem;
     // color: hsl(234, 37%, 22%);
@@ -76,6 +76,8 @@
       caret-color: hsl(234, 37%, 22%); //TODO: maaaybe make a variable for dark vs light?
       // border-bottom: 1px solid gray;
       // border-bottom: 1px solid gray;
+      box-shadow: rgba(35, 39, 77, 0.25) 0px 12px 24px,
+      inset 0 0 8px rgba(255, 255, 255, 0.25); //TODO: variable for dark vs light; white for dark this blue for light
       font-weight: lighter;
     }
 
