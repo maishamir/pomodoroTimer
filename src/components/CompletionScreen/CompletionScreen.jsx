@@ -29,7 +29,7 @@ function CompletionScreen() {
           height={700}
           width={700}
           isStopped={!showConfetti}
-          isPaused={false}
+          isClickToPauseDisabled={true}
         />
       </div>
       <div className="completionScreen__content">
