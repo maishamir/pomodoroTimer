@@ -82,7 +82,7 @@ function ActiveSession() {
           {isEditing ? (
             <input
               type="text"
-              placeholder={focusSession === "" ? "Click to set a focus" : ""}
+              // placeholder={focusSession === "" ? "Click to set a focus" : ""}
               ref={inputRef}
               className="activeSession__focusInput"
               onChange={handleSetFocus}
