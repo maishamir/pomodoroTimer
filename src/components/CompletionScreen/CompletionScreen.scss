@@ -9,9 +9,13 @@
 
     &__confetti {
         position: absolute;
-        z-index: -10;
+        z-index: 1;
         top: 0;
         // background: rebeccapurple;
+    }
+
+    &__content {
+        z-index: 5;
     }
 
     &__title {

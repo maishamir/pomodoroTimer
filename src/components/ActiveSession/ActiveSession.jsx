@@ -52,7 +52,7 @@ function ActiveSession() {
       localStorage.setItem("sessionCount", updateCount);
       const delay = setTimeout(() => {
         navigate("/complete");
-      }, 2800);
+      }, 1800);
 
       return () => clearTimeout(delay);
     }

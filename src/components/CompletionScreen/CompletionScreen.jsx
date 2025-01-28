@@ -10,46 +10,48 @@ import lottieConfetti from "../../assets/lottieConfetti.json";
 
 function CompletionScreen() {
   let navigate = useNavigate();
-  const [showConfetti, setShowConfetti] = useState(false)
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const defaultOptions = {
     loop: false,
     autoplay: true,
     animationData: lottieConfetti,
     rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
-  }
-   
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
   return (
     <div className="completionScreen">
       <div className="completionScreen__confetti">
-              <Lottie
-                options={defaultOptions}
-                height={700}
-                width={700}
-                isStopped={!showConfetti}
-                isPaused={false}
-              />
-            </div>
-      <h1 className="completionScreen__title">Great job!</h1>
-      
-      <div className="completionScreen__choices">
-        <h2 className="completionScreen__subtitle">What's next?</h2>
-        <div className="completionScreen__buttons">
-          <button
-            className="completionScreen__button"
-            onClick={() => navigate("/break")}
-          >
-            <img src={teaCupIcon} alt="" className="completionScreen__icon" />
-          </button>
+        <Lottie
+          options={defaultOptions}
+          height={700}
+          width={700}
+          isStopped={!showConfetti}
+          isPaused={false}
+        />
+      </div>
+      <div className="completionScreen__content">
+        <h1 className="completionScreen__title">Great job!</h1>
 
-          <button
-            className="completionScreen__button"
-            onClick={() => navigate("/active")}
-          >
-            <img src={clockIcon} alt="" className="completionScreen__icon" />
-          </button>
+        <div className="completionScreen__choices">
+          <h2 className="completionScreen__subtitle">What's next?</h2>
+          <div className="completionScreen__buttons">
+            <button
+              className="completionScreen__button"
+              onClick={() => navigate("/break")}
+            >
+              <img src={teaCupIcon} alt="" className="completionScreen__icon" />
+            </button>
+
+            <button
+              className="completionScreen__button"
+              onClick={() => navigate("/active")}
+            >
+              <img src={clockIcon} alt="" className="completionScreen__icon" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
