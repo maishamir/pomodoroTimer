@@ -1,9 +1,11 @@
-@import "./src/assets/variables";
-
+@use "./src/assets/variables" as *;
+@use "sass:map";
 
 .background_gradient {
   overflow: auto;
   position: relative;
+  background-color: var(--bg-color);
+  background-image: var(--bg-gradient);
 }
 
 .background_gradient::before {
@@ -17,29 +19,28 @@
   background: inherit;
 }
 
-.dark {
-  background-color: hsla(256.90382672992814, 100%, 9%, 1);
+// .dark {
+//   background-color: hsla(256.90382672992814, 100%, 9%, 1);
+//   background-image: var(--bg-gradient);
+//   background-blend-mode: normal, normal, normal;
+// }
+
+.light {
+  background-color: hsla(0, 0%, 98%, 1);
   background-image: radial-gradient(
-      circle at 97% 9%,
-      hsla(212.39999999999998, 46%, 58%, 1) 5%,
+      circle at 90% 50%,
+      hsla(212.3684210526316, 72%, 58%, 1) 5%,
       transparent 74%
     ),
     radial-gradient(
       circle at 49% 0%,
-      hsla(182.35294117647058, 45%, 56%, 1) 5%,
+      hsla(182.64705882352945, 68%, 56%, 1) 5%,
       transparent 74%
     ),
     radial-gradient(
-      circle at 22% 42%,
-      hsla(234.11764705882354, 45%, 56%, 1) 5%,
-      transparent 72.81233064803996%
+      circle at 32% 6%,
+      hsla(234, 91%, 56%, 1) 5%,
+      transparent 74%
     );
   background-blend-mode: normal, normal, normal;
 }
-
-.light {
-    background-color: hsla(0, 0%, 98%, 1);
-    background-image: radial-gradient(circle at 90% 50%, hsla(212.3684210526316, 72%, 58%, 1) 5%, transparent 74%), radial-gradient(circle at 49% 0%, hsla(182.64705882352945, 68%, 56%, 1) 5%, transparent 74%), radial-gradient(circle at 32% 6%, hsla(234, 91%, 56%, 1) 5%, transparent 74%);
-    background-blend-mode: normal, normal, normal;
-}  
-    
