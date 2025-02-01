@@ -6,7 +6,7 @@ import useTimer from "../../hooks/useTimer";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
 import TimerButtons from "../TimerButtons/TimerButtons";
-import flameIcon from "../../assets/fire.png"
+import flameIcon from "../../assets/fire.png";
 
 function ActiveSession() {
   let navigate = useNavigate();
