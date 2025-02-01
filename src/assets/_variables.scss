@@ -1,73 +1,51 @@
-// // colors
-// $englishViolet: #554664;
-// $aqua: #58ffe5;
-// $violet: #9f07ff;
-// $purple: #5214b8;
-// $indigo: #350da8;
+
+$indigo: #350da8;
+$purple: #120f34;
 $alabaster: #faf9f6;
-
-// //dark theme gradient backgrounds
-// $dark-gradient-1: radial-gradient(
-//   circle at 97% 9%,
-//   hsla(212.39999999999998, 38%, 58%, 1) 5%,
-//   transparent 74%
-// );
-
-// $dark-gradient-2: radial-gradient(
-//   circle at 49% 0%,
-//   hsla(182.35294117647058, 37%, 56%, 1) 5%,
-//   transparent 74%
-// );
-
-// $dark-gradient-3: radial-gradient(
-//     circle at 22% 42%,
-//     hsla(234.11764705882354, 37%, 56%, 1) 5%,
-//     transparent 72.81233064803996%,
-//   );
-
-// $dark-background: #{$dark-gradient-1}, #{$dark-gradient-2}, #{$dark-gradient-3};
-
-// $dark-theme: (
-//   bgColor: hsla(256.90382672992814, 100%, 9%, 1),
-//   bgGradient: red
-// );
-
-// // $light-theme: (
+$icyBlue: #c3eefc;
+$russianViolet: #0d002e;
 
 :root {
-  --bg-color: hsla(0, 0%, 98%, 1);
+  --bg-color: rgb(255, 255, 255);
   --bg-gradient: radial-gradient(
       circle at 90% 50%,
-      hsla(212.3684210526316, 72%, 58%, 1) 5%,
-      transparent 74%
+      hsl(212, 85%, 60%) 5%,
+      /* Higher saturation and lightness */ transparent 74%
     ),
     radial-gradient(
       circle at 49% 0%,
-      hsla(182.64705882352945, 68%, 56%, 1) 5%,
-      transparent 74%
+      hsl(182, 80%, 58%) 5%,
+      /* Higher saturation */ transparent 74%
     ),
     radial-gradient(
       circle at 32% 6%,
-      hsla(234, 91%, 56%, 1) 5%,
-      transparent 74%
+      hsl(234, 100%, 60%) 5%,
+      /* Maximum saturation for vibrancy */ transparent 74%
     );
+  --text-color: white;
+  --shadow-color: rgba(13, 0, 46, 0.25);
+  //   --caret: #0d002e;
 }
 
 .darkmode {
-  --bg-color: hsla(256.90382672992814, 100%, 9%, 1);
+  --bg-color: #0d002e;
+
   --bg-gradient: radial-gradient(
-      circle at 97% 9%,
-      hsla(212.39999999999998, 38%, 58%, 1) 5%,
-      transparent 74%
+      circle at 90% 50%,
+      hsla(212.30769230769232, 53%, 33%, 1) 5.192107995846314%,
+      transparent 74.16683361017816%
     ),
     radial-gradient(
       circle at 49% 0%,
-      hsla(182.35294117647058, 37%, 56%, 1) 5%,
-      transparent 74%
+      hsla(182.33766233766235, 48%, 31%, 1) 5.192107995846314%,
+      transparent 74.06126750815324%
     ),
     radial-gradient(
-      circle at 22% 42%,
-      hsla(234.11764705882354, 37%, 56%, 1) 5%,
-      transparent 72.81233064803996%
+      circle at 32% 6%,
+      hsla(234.3884892086331, 69%, 39%, 1) 5.192107995846314%,
+      transparent 74.76047022295641%
     );
+  --text-color: #c3eefc;
+  --shadow-color: rgba(255, 255, 255, 0.181);
+  --caret: #c3eefc;
 }

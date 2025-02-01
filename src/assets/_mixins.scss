@@ -1,0 +1,37 @@
+@use "./variables" as *;
+
+@mixin inputField($width, $textAlign, $shadowColor, $fontSize) {
+    border-radius: 1rem;
+    font-size: $fontSize;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    outline: none;
+    cursor: pointer;
+    width: $width;
+    text-align: $textAlign;
+    // background-color: rgba(255, 255, 255, 0.397);
+    background-color: rgba(195, 238, 252, 0.398);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0.5rem;
+    color: var(--text-color);
+    margin: 0;
+    
+    &::placeholder{
+        color: $alabaster;
+        font-weight: 600;
+    }
+
+
+    &:focus {
+        caret-color: $icyBlue;
+        box-shadow: $shadowColor 0px 12px 24px, inset 0 0 8px  rgba(255, 255, 255, 0.25);
+        font-weight: normal;
+
+        &::placeholder {
+            color: transparent;
+        }
+    }
+
+    &[type=number] {
+        -moz-appearance: textfield;
+    }
+}
