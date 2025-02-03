@@ -20,6 +20,7 @@
 
     &__title {
         text-align: center;
+        color: var(--text-color);
     }
 
     &__choices {
@@ -32,6 +33,7 @@
     &__subtitle {
         margin-top: 2rem;
         font-size: 2rem;
+        color: var(--text-color);
     }
 
     &__buttons {
