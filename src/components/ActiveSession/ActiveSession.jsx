@@ -7,8 +7,12 @@ import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
 import TimerButtons from "../TimerButtons/TimerButtons";
 import flameIcon from "../../assets/fire.png";
+import darkIcon from "../../assets/darkFilled.png";
+
 
 function ActiveSession() {
+
+
   let navigate = useNavigate();
   const [input, setInput] = useState();
 
@@ -73,7 +77,6 @@ function ActiveSession() {
           {isEditing ? (
             <input
               type="text"
-
               ref={inputRef}
               className="activeSession__focusInput"
               onChange={handleSetFocus}
@@ -102,9 +105,14 @@ function ActiveSession() {
           handleClear={handleClear}
           skip={false}
         />
-        <div className="activeSession__sessionCounter">
-          <img src={flameIcon} alt="" className="activeSession__flameIcon" />
-          <p> {sessions}</p>
+        <div className="activeSession__icons">
+          <div className="activeSession__sessionCounter">
+            <img src={flameIcon} alt="" className="activeSession__flameIcon" />
+            <p> {sessions}</p>
+          </div>
+          {/* <div className="activeSession__toggle" id="theme">
+            <img src={darkIcon} alt="" onClick={() => { }} />
+          </div> */}
         </div>
       </div>
     </main>

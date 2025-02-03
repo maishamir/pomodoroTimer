@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 import "./CompletionScreen.scss";
 import TimerDisplay from "../TimerDisplay/TimerDisplay";
 import clockIcon from "../../assets/alarm-clock.svg";
@@ -10,16 +10,21 @@ import lottieConfetti from "../../assets/lottieConfetti.json";
 
 function CompletionScreen() {
   let navigate = useNavigate();
+  const hasPlayed = useRef(false);
   const [showConfetti, setShowConfetti] = useState(false);
 
-  const defaultOptions = {
+  const defaultOptions = useMemo(() => ({
     loop: false,
-    autoplay: true,
+    autoplay: !hasPlayed.current,
     animationData: lottieConfetti,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
-  };
+  }))
+
+  useEffect(() => {
+    hasPlayed.current = true;
+  })
 
   return (
     <div className="completionScreen">

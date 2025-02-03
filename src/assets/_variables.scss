@@ -1,51 +1,5 @@
-
 $indigo: #350da8;
 $purple: #120f34;
 $alabaster: #faf9f6;
 $icyBlue: #c3eefc;
 $russianViolet: #0d002e;
-
-:root {
-  --bg-color: rgb(255, 255, 255);
-  --bg-gradient: radial-gradient(
-      circle at 90% 50%,
-      hsl(212, 85%, 60%) 5%,
-      /* Higher saturation and lightness */ transparent 74%
-    ),
-    radial-gradient(
-      circle at 49% 0%,
-      hsl(182, 80%, 58%) 5%,
-      /* Higher saturation */ transparent 74%
-    ),
-    radial-gradient(
-      circle at 32% 6%,
-      hsl(234, 100%, 60%) 5%,
-      /* Maximum saturation for vibrancy */ transparent 74%
-    );
-  --text-color: white;
-  --shadow-color: rgba(13, 0, 46, 0.25);
-  //   --caret: #0d002e;
-}
-
-.darkmode {
-  --bg-color: #0d002e;
-
-  --bg-gradient: radial-gradient(
-      circle at 90% 50%,
-      hsla(212.30769230769232, 53%, 33%, 1) 5.192107995846314%,
-      transparent 74.16683361017816%
-    ),
-    radial-gradient(
-      circle at 49% 0%,
-      hsla(182.33766233766235, 48%, 31%, 1) 5.192107995846314%,
-      transparent 74.06126750815324%
-    ),
-    radial-gradient(
-      circle at 32% 6%,
-      hsla(234.3884892086331, 69%, 39%, 1) 5.192107995846314%,
-      transparent 74.76047022295641%
-    );
-  --text-color: #c3eefc;
-  --shadow-color: rgba(255, 255, 255, 0.181);
-  --caret: #c3eefc;
-}
