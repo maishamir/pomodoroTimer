@@ -95,7 +95,7 @@ function ActiveSession() {
         </div>
       </div>
       <div className="activeSession__timerDisplay">
-        <TimerDisplay minutes={minutes} seconds={seconds} />
+        <TimerDisplay minutes={minutes} seconds={seconds} setInput={setInput}/>
         <TimerButtons
           input={input}
           setInput={setInput}

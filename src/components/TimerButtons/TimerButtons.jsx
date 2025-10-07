@@ -20,14 +20,14 @@ function TimerButtons({
     if (!skip) {
       return (
         <form onSubmit={handleStartStop} className="timerButtons">
-          <input
+          {/* <input
             type="number"
             placeholder="mins"
             value={input}
             onChange={({ target }) => setInput(target.value)}
             disabled={timeEditable ? false : true}
             className="timerButtons__input"
-          />
+          /> */}
           <div className="timerButtons__buttons">
             <button type="submit" className="timerButtons__button">
               {buttonText}
