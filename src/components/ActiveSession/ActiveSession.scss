@@ -49,6 +49,7 @@
     font-weight: 400;
     padding: 1rem 0.5rem;
     text-wrap: nowrap;
+    border: 1px solid transparent;
   }
 
   &__focusInput {
@@ -81,6 +82,7 @@
     &:hover {
       opacity: 1;
       transform: scale(1.025);
+      // transform: translateY(-5px);
     }
   }
 
