@@ -1,24 +1,6 @@
 @use "../../assets/variables" as *;
 
 .timerDisplay {
-
-  &__input {
-    font-family: sans-serif;
-    background-color: transparent;
-    border: none;
-    font-size: 12rem;
-    text-align: center;
-    margin-bottom: 1rem;
-    opacity: 0.8;
-    width: 50%;
-
-    &::placeholder {
-      color: var(--text-color);
-      font-weight: 100;
-    }
-  }
-
-  &__display {
     font-family: sans-serif;
     margin-bottom: 1rem;
     text-align: center;
@@ -26,6 +8,4 @@
     font-weight: 100;
     // color: $alabaster;
     color: var(--text-color); //TODO: darkmode text color
-    cursor: pointer;
-  }
 }
