@@ -16,8 +16,8 @@
     margin: 0;
     
     &::placeholder{
-        color: $alabaster;
-        font-weight: 600;
+        color: #faf9f6c7;
+        font-weight: 400;
     }
 
 
@@ -26,9 +26,6 @@
         box-shadow: $shadowColor 0px 12px 24px, inset 0 0 8px  rgba(255, 255, 255, 0.25);
         font-weight: normal;
 
-        &::placeholder {
-            color: transparent;
-        }
     }
 
     &[type=number] {

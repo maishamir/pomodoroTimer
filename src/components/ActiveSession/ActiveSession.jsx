@@ -16,6 +16,7 @@ function ActiveSession() {
   let navigate = useNavigate();
   const [input, setInput] = useState();
 
+  // const [focusSession, setFocusSession] = useState("Click to set a focus");
   const [focusSession, setFocusSession] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [sessions, setSessions] = useState(0);
@@ -82,6 +83,7 @@ function ActiveSession() {
               onChange={handleSetFocus}
               onBlur={handleBlur}
               value={focusSession}
+              placeholder="Set a focus"
               maxLength="40"
               onKeyDown={(e) => {
                 if (e.key === "Enter") handleBlur();
@@ -89,7 +91,7 @@ function ActiveSession() {
             />
           ) : (
             <h1 className="activeSession__focusSession" onClick={handleClick}>
-              {focusSession || "Click to set a focus"}
+              {focusSession || "Set a focus"}
             </h1>
           )}
         </div>
