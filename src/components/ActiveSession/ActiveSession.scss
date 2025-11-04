@@ -54,6 +54,7 @@
 
   &__focusInput {
     @include inputField(40vw, center, var(--shadow-color), 2.3rem);
+    transform: scale(1.025);
     &::selection {
       background: rgba(255, 255, 255, 0.397);
     }
